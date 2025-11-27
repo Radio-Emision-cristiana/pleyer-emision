@@ -1,0 +1,148 @@
+  .mini-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 90px;
+    /* Degradado vibrante y elegante - Modo claro */
+    background: linear-gradient(135deg, 
+      rgba(74, 144, 226, 0.95) 0%,
+      rgba(116, 185, 255, 0.95) 25%,
+      rgba(0, 204, 255, 0.95) 50%,
+      rgba(9, 132, 227, 0.95) 75%,
+      rgba(106, 90, 205, 0.9) 100%
+    );
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1000;
+    box-shadow: 
+      0 -4px 30px rgba(0, 0, 0, 0.15),
+      0 -1px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    animation: slideUpFadeIn 0.6s ease-out;
+    overflow: hidden;
+  }
+
+  /* Capa de degradado animado adicional para modo claro */
+  .mini-player::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 25%,
+      rgba(0, 255, 153, 0.15) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 100%
+    );
+    animation: shimmerEffect 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes shimmerEffect {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  /* Animación de entrada elegante */
+  @keyframes slideUpFadeIn {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .mini-player:hover {
+    background: linear-gradient(135deg, 
+      rgba(74, 144, 226, 1) 0%,
+      rgba(116, 185, 255, 1) 25%,
+      rgba(0, 204, 255, 1) 50%,
+      rgba(9, 132, 227, 1) 75%,
+      rgba(106, 90, 205, 0.95) 100%
+    );
+    box-shadow: 
+      0 -6px 40px rgba(0, 0, 0, 0.2),
+      0 -2px 12px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 30px rgba(116, 185, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .mini-player:hover::after {
+    animation-duration: 2s;
+  }
+
+  /* Modo oscuro mejorado - sin efectos de shimmer */
+  body.dark-theme .mini-player::after {
+    display: none;
+  }
+
+  /* Modo oscuro mejorado */
+  body.dark-theme .mini-player {
+    background: linear-gradient(135deg, 
+      rgba(30, 60, 114, 0.95), 
+      rgba(42, 82, 152, 0.95),
+      rgba(45, 55, 72, 0.9)
+    );
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      0 -4px 30px rgba(0, 0, 0, 0.3),
+      0 -1px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  body.dark-theme .mini-player:hover {
+    box-shadow: 
+      0 -6px 40px rgba(0, 0, 0, 0.4),
+      0 -2px 12px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .mini-player-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Barra de progreso sutil en la parte superior */
+  .mini-player::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 255, 153, 0.8),
+      rgba(0, 204, 122, 0.8),
+      rgba(0, 255, 153, 0.8)
+    );
+    background-size: 200% 100%;
+    animation: progressFlow 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .mini-player.playing::before {
