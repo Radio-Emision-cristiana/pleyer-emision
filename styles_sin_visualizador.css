@@ -2541,7 +2541,7 @@
     }
 
     .whatsapp-message {
-      bottom: 200px !important;
+      bottom: 110px !important;
       right: 460px !important; /* Seguir al botón WhatsApp */
       z-index: 9999 !important;
     }
@@ -2574,12 +2574,12 @@
 
     .download-float {
       bottom: 110px !important;
-      right: 135px !important;
+      right: 610px !important;
     }
 
     .paypal-float {
       bottom: 110px !important;
-      right: 255px !important;
+      right: 760px !important;
     }
 
     .whatsapp-message {
