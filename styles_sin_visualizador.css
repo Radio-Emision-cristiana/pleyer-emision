@@ -2522,3 +2522,45 @@
       height: 40px;
     }
   }
+/* Responsive para tablets modo vertical - posiciones centradas */
+  @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+    .whatsapp-float {
+      bottom: 110px !important;
+      right: 460px !important;
+    }
+
+    .download-float {
+      bottom: 110px !important;
+      right: 610px !important;
+    }
+
+    .paypal-float {
+      bottom: 110px !important;
+      right: 760px !important;
+    }
+
+    .whatsapp-message {
+      bottom: 200px !important;
+      right: 15px !important; /* Seguir al botón WhatsApp */
+      z-index: 9999 !important;
+    }
+
+    .whatsapp-message-arrow {
+      right: 20px; /* Ajustar flecha al mensaje alineado con botón */
+    }
+
+    .whatsapp-btn, .download-btn, .paypal-btn {
+      width: 55px;
+      height: 55px;
+    }
+
+    .whatsapp-btn svg, .download-btn svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .paypal-icon {
+      width: 45px;
+      height: 45px;
+    }
+  }
